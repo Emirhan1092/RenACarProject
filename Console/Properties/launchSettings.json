@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ConsoleUI": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\em124\\OneDrive\\Desktop\\RentACarProject\\Console\\bin\\Debug\\net8.0"
+    }
+  }
+}
