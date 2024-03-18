@@ -19,15 +19,15 @@ namespace DataAccess.Conctrete.InMemory
         {
             _cars = new List<Car>(){
 
-                new Car { Id = 1, ColorId = 1, BrandId = 1, DailyPrice = 240000, ModelYear = 2009, Description = "Megan" },
-                new Car { Id = 2, ColorId = 2, BrandId = 2, DailyPrice = 500000, ModelYear = 2023, Description = "Poursch" },
-                new Car { Id = 3, ColorId = 2, BrandId = 2, DailyPrice = 4001000, ModelYear = 2024, Description = "Toyota" },
-                new Car { Id = 4, ColorId = 3, BrandId = 2, DailyPrice = 700000, ModelYear = 2019, Description = "Doblo" },
-                new Car { Id = 5, ColorId = 3, BrandId = 2, DailyPrice = 800000, ModelYear = 2018, Description = "Ferrari" },
-                new Car { Id = 6, ColorId = 3, BrandId = 4, DailyPrice = 900000, ModelYear = 2017, Description = "Renault" },
-                new Car { Id = 7, ColorId = 4, BrandId = 5, DailyPrice = 500000, ModelYear = 2016, Description = "Megan" },
-                new Car { Id = 8, ColorId = 4, BrandId = 3, DailyPrice = 234000, ModelYear = 2014, Description = "Poursch" },
-                new Car { Id = 9, ColorId = 5, BrandId = 5, DailyPrice = 2221000, ModelYear = 2001, Description = "Megan" }
+                new Car { CarId = 1, ColorId = 1, BrandId = 1, DailyPrice = 240000, ModelYear = 2009, Description = "Megan" },
+                new Car { CarId = 2, ColorId = 2, BrandId = 2, DailyPrice = 500000, ModelYear = 2023, Description = "Poursch" },
+                new Car { CarId = 3, ColorId = 2, BrandId = 2, DailyPrice = 4001000, ModelYear = 2024, Description = "Toyota" },
+                new Car { CarId = 4, ColorId = 3, BrandId = 2, DailyPrice = 700000, ModelYear = 2019, Description = "Doblo" },
+                new Car {CarId = 5, ColorId = 3, BrandId = 2, DailyPrice = 800000, ModelYear = 2018, Description = "Ferrari" },
+                new Car {CarId = 6, ColorId = 3, BrandId = 4, DailyPrice = 900000, ModelYear = 2017, Description = "Renault" },
+                new Car {CarId = 7, ColorId = 4, BrandId = 5, DailyPrice = 500000, ModelYear = 2016, Description = "Megan" },
+                new Car {CarId = 8, ColorId = 4, BrandId = 3, DailyPrice = 234000, ModelYear = 2014, Description = "Poursch" },
+                new Car { CarId = 9, ColorId = 5, BrandId = 5, DailyPrice = 2221000, ModelYear = 2001, Description = "Megan" }
             };
 
 
@@ -41,7 +41,7 @@ namespace DataAccess.Conctrete.InMemory
 
         public void Remove(Car car)
         {
-            Car carToDelete = _cars.SingleOrDefault(c => c.Id == car.Id);
+            Car carToDelete = _cars.SingleOrDefault(c => c.CarId == car.CarId);
             if (carToDelete != null)
             {
                 _cars.Remove(carToDelete);
@@ -52,16 +52,16 @@ namespace DataAccess.Conctrete.InMemory
             return _cars;
         }
 
-        public List<Car> GetById(int Id)
+        public List<Car> GetById(int carId)
         {
-            return _cars.Where(c => c.Id == Id).ToList();
+            return _cars.Where(c => c.CarId == carId).ToList();
 
         }
 
         public void Update(Car car)
         {
-            Car carToUpdate = _cars.SingleOrDefault(c => c.Id == car.Id);
-            carToUpdate.Id = car.Id;
+            Car carToUpdate = _cars.SingleOrDefault(c => c.CarId == car.CarId);
+            carToUpdate.CarId = car.CarId;
             carToUpdate.BrandId = car.BrandId;
             carToUpdate.ColorId = car.ColorId;
             carToUpdate.DailyPrice = car.DailyPrice;
