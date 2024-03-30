@@ -1,8 +1,5 @@
 ﻿using Buisness.Abstract;
-using Core.Utilities.Results;
 using Entities.Concrete;
-using Entities.DTOs;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -19,23 +16,23 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-
         public IActionResult GetAll()
         {
-            var result = _carService.GetAll();  
-            if(result.Success)
-            {
-                return Ok(result.Data);  
-            }
-            return BadRequest(result.Message);    
+            var result = _carService.GetAll();
 
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
         }
+
 
         [HttpGet("getbyid")] 
         public   IActionResult GetById(int carid)
         {
             var result = _carService.GetById(carid);
-            if(result.Success)
+            if(result.Success )
             {
                 return Ok(result.Data);
             }
@@ -55,7 +52,7 @@ namespace WebAPI.Controllers
             return BadRequest(result.Message);  
         }
 
-        [HttpGet("getbycolorId")]
+        [HttpGet("getbybrandId")]
         public IActionResult GetCarsBrandId(int brandid)
         {
             var result = _carService.GetCarsBrandId(brandid);

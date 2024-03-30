@@ -1,15 +1,10 @@
 ﻿using Buisness.Abstract;
 using Buisness.Constants;
+using Buisness.FluentValidation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
-using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Buisness.Conctrete
 {
@@ -24,35 +19,13 @@ namespace Buisness.Conctrete
 
         public IResult Add(Rental rental)
         {
-           if( CarDelivery==null )
-            {
-                _rentalDal.Add(rental);
+         ValidationTool.Validate(new RentalValidator(), rental);
 
-                return new SuccessResult(Messages.RentAdded);
-            }
-            else
-            {
-                return new ErrorResult(Messages.RentAdded);
+            _rentalDal.Add(rental); 
 
-            }
+            return new SuccessResult(Messages.RentAdded);
 
-        }
 
-        public IResult CarDelivery(int id)
-        {
-            var rental = _rentalDal.Get(r => r.CarId == id);
-
-            if (rental != null)
-            {
-                
-                _rentalDal.Delete(rental);
-                return new SuccessResult(Messages.CarDelivered);
-            }
-            else
-            {
-                
-                return new ErrorResult(Messages.CarNotDelivered);
-            }
         }
 
         public IResult Delete(Rental rental)

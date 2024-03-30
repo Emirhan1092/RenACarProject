@@ -1,14 +1,9 @@
-﻿using ConsoleApp1.DataAccess.Abstract;
-using ConsoleApp1.Entities.Concrete;
+﻿
 using Core.DataAccess.EntityFramework;
-using DataAccess.Concrete.Entityframework;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 
-namespace ConsoleApp1.DataAccess.Conctrete.EntityFramework
+namespace Entities.Concrete
 {
     public class EfBrandDal : EfEntityRepositoryBase<Brand, CarsContext>, IBrandDal
     {

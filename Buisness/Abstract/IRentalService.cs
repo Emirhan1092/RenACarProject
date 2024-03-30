@@ -1,10 +1,5 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Buisness.Abstract
 {
@@ -15,6 +10,6 @@ namespace Buisness.Abstract
         IResult Delete(Rental rental);
         IDataResult<List<Rental>> GetAll();
         IDataResult<Rental> Get(int id);
-        IResult CarDelivery(int id);
+        
     }
 }

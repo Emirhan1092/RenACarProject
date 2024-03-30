@@ -1,20 +1,16 @@
 ﻿using Buisness.Abstract;
 using Buisness.Constants;
+using Buisness.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
-using DataAccess.Concrete.Entityframework;
 using Entities.Concrete;
 using Entities.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Buisness.Concrete
 {
-   
+
     public class CarManager : ICarService
     {
         ICarDal _carDal;
@@ -27,19 +23,21 @@ namespace Buisness.Concrete
         public CarManager(ICarDal carDal)
         {
             _carDal = carDal;
-        }   
+        }
 
+        [ValidationAspect(typeof(CarValidatior))]
         public IResult Add(Car car)
         {
 
-            if(car.CarName.Length<2)
-            {
-                return new ErrorResult(Messages.CarNameInvalid);
-            }
+      
+
+            ValidationTool.Validate(new CarValidatior(), car);
 
             _carDal.Add(car);
 
             return new SuccessResult(Messages.CarAdded);
+
+
         }
 
         public IResult Delete(Car car)
@@ -50,10 +48,8 @@ namespace Buisness.Concrete
 
         public IDataResult<List<Car>> GetAll()
         {
-            if (DateTime.Now.Hour == 22)
-            {
-                return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
-            }
+           
+           
             return new SuccesDataResult<List<Car>>(Messages.CarListed);
 
 
@@ -80,7 +76,7 @@ namespace Buisness.Concrete
 
         public IDataResult<List<Car>> GetCarsByColorId(int colorId)
         {
-            return new SuccesDataResult<List<Car>>(_carDal.GetAll(p => p.CarId == colorId), Messages.CarListed);
+            return new SuccesDataResult<List<Car>>(_carDal.GetAll(p => p.ColorId == colorId), Messages.CarListed);
 
         }
 

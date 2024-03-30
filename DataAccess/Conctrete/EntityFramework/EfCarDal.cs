@@ -1,13 +1,7 @@
 ﻿using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
-using DataAccess.Concrete.Entityframework;
 using Entities.Concrete;
 using Entities.DTOs;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 
 namespace DataAccess.Concrete.EntityFramework
 {
@@ -18,12 +12,12 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 using (CarsContext context = new CarsContext())
                 {
-                    var result = from car in context.Car
-                                 join brand in context.Brand on car.BrandId equals brand.BrandId
-                                 join color in context.Color on car.ColorId equals color.ColorId
+                    var result = from car in context.Cars
+                                 join brand in context.Brands on car.BrandId equals brand.Id
+                                 join color in context.Colors on car.ColorId equals color.Id
                                  select new CarDetailDto
                                  { 
-                                     CarName = car.Description,
+                                     CarName = car.CarName,
                                      BrandName = brand.BrandName,
                                      ColorName = color.ColorName,
                                      DailyPrice = (decimal)car.DailyPrice,

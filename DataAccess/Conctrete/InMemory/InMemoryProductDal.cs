@@ -1,12 +1,9 @@
-﻿using DataAccess.Abstract;
+﻿
+
+using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.Conctrete.InMemory
 {
@@ -19,15 +16,15 @@ namespace DataAccess.Conctrete.InMemory
         {
             _cars = new List<Car>(){
 
-                new Car { CarId = 1, ColorId = 1, BrandId = 1, DailyPrice = 240000, ModelYear = 2009, Description = "Megan" },
-                new Car { CarId = 2, ColorId = 2, BrandId = 2, DailyPrice = 500000, ModelYear = 2023, Description = "Poursch" },
-                new Car { CarId = 3, ColorId = 2, BrandId = 2, DailyPrice = 4001000, ModelYear = 2024, Description = "Toyota" },
-                new Car { CarId = 4, ColorId = 3, BrandId = 2, DailyPrice = 700000, ModelYear = 2019, Description = "Doblo" },
-                new Car {CarId = 5, ColorId = 3, BrandId = 2, DailyPrice = 800000, ModelYear = 2018, Description = "Ferrari" },
-                new Car {CarId = 6, ColorId = 3, BrandId = 4, DailyPrice = 900000, ModelYear = 2017, Description = "Renault" },
-                new Car {CarId = 7, ColorId = 4, BrandId = 5, DailyPrice = 500000, ModelYear = 2016, Description = "Megan" },
-                new Car {CarId = 8, ColorId = 4, BrandId = 3, DailyPrice = 234000, ModelYear = 2014, Description = "Poursch" },
-                new Car { CarId = 9, ColorId = 5, BrandId = 5, DailyPrice = 2221000, ModelYear = 2001, Description = "Megan" }
+                new Car { CarId = 1, ColorId = 1, BrandId = 1, DailyPrice = 240000, ModelYear = 2009, Descriptions = "Megan" },
+                new Car { CarId = 2, ColorId = 2, BrandId = 2, DailyPrice = 500000, ModelYear = 2023, Descriptions = "Poursch" },
+                new Car { CarId = 3, ColorId = 2, BrandId = 2, DailyPrice = 4001000, ModelYear = 2024, Descriptions = "Toyota" },
+                new Car { CarId = 4, ColorId = 3, BrandId = 2, DailyPrice = 700000, ModelYear = 2019, Descriptions = "Doblo" },
+                new Car {CarId = 5, ColorId = 3, BrandId = 2, DailyPrice = 800000, ModelYear = 2018, Descriptions = "Ferrari" },
+                new Car {CarId = 6, ColorId = 3, BrandId = 4, DailyPrice = 900000, ModelYear = 2017, Descriptions = "Renault" },
+                new Car {CarId = 7, ColorId = 4, BrandId = 5, DailyPrice = 500000, ModelYear = 2016, Descriptions = "Megan" },
+                new Car {CarId = 8, ColorId = 4, BrandId = 3, DailyPrice = 234000, ModelYear = 2014, Descriptions = "Poursch" },
+                new Car { CarId = 9, ColorId = 5, BrandId = 5, DailyPrice = 2221000, ModelYear = 2001, Descriptions = "Megan" }
             };
 
 
@@ -65,7 +62,7 @@ namespace DataAccess.Conctrete.InMemory
             carToUpdate.BrandId = car.BrandId;
             carToUpdate.ColorId = car.ColorId;
             carToUpdate.DailyPrice = car.DailyPrice;
-            carToUpdate.Description = car.Description;
+            carToUpdate.Descriptions = car.Descriptions;
         }
 
         public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)

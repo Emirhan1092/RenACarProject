@@ -1,15 +1,10 @@
 ﻿using Buisness.Abstract;
 using Buisness.Constants;
+using Buisness.FluentValidation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
-using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Buisness.Conctrete
 {
@@ -24,6 +19,8 @@ namespace Buisness.Conctrete
 
         public IResult Add(User user)
         {
+            ValidationTool.Validate(new UserValidator(), user);
+
             _userDal.Add(user);
 
             return new SuccessResult(Messages.UserAdded);
@@ -38,7 +35,8 @@ namespace Buisness.Conctrete
 
         public IDataResult<User> Get(int userid)
         {
-            return new SuccesDataResult<User>(_userDal.Get(p => p.UserId == userid), Messages.UserListed);
+
+            return new SuccesDataResult<User>(_userDal.Get(p => p.Id == userid), Messages.UserListed);
 
 
         }
@@ -47,7 +45,7 @@ namespace Buisness.Conctrete
         {
 
           
-            return new SuccesDataResult<List<User>>(Messages.UserListed);
+            return new SuccesDataResult<List<User>>(_userDal.GetAll(),Messages.UserListed);
 
         }
 

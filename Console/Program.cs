@@ -1,23 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Buisness.Concrete;
+﻿using Buisness.Concrete;
 using Buisness.Conctrete;
-using DataAccess.Conctrete.InMemory;
-
+using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
+using Entities.Concrete;
+using System;
 namespace ConsoleUI
 {
-    class Program
-
+    public class Program
     {
         static void Main(string[] args)
         {
+            CustomerGetAllTest();
+        }
+
+        private static void CustomerGetAllTest()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            var result = customerManager.GetAll();
+
+            if (result.Success)
+            {
+                foreach (var customer in result.Data)
+                {
+                    Console.WriteLine("Customer Name: " + customer.CompanyName);
+
+                }
 
 
-
-
+            }
         }
     }
 }
+

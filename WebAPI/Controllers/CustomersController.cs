@@ -1,8 +1,5 @@
 ﻿using Buisness.Abstract;
-using Core.Utilities.Results;
-using DataAccess.Abstract;
 using Entities.Concrete;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
