@@ -6,7 +6,7 @@ using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
-using Entities.DTOs;
+using Entities.Concrete;
 
 namespace Buisness.Concrete
 {
@@ -48,9 +48,10 @@ namespace Buisness.Concrete
 
         public IDataResult<List<Car>> GetAll()
         {
-           
-           
-            return new SuccesDataResult<List<Car>>(Messages.CarListed);
+            var cars = _carDal.GetAll();
+            return new SuccesDataResult<List<Car>>(cars, Messages.CarListed);
+
+          
 
 
         }

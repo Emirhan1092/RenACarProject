@@ -1,9 +1,6 @@
 ﻿using Buisness.Concrete;
 using Buisness.Conctrete;
-using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
-using Entities.Concrete;
-using System;
 namespace ConsoleUI
 {
     public class Program
@@ -11,6 +8,7 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
             CustomerGetAllTest();
+            CarGetAllTest();
         }
 
         private static void CustomerGetAllTest()
@@ -27,6 +25,21 @@ namespace ConsoleUI
                 }
 
 
+            }
+        }
+        private static void CarGetAllTest()
+        {
+            CarManager carmanager = new CarManager(new EfCarDal());
+            var result = carmanager.GetAll();  
+            if(result.Success) 
+            {
+              foreach(var car in result.Data)
+                {
+                    Console.WriteLine("Cars Name :" + car.CarName);
+                }
+            
+            
+            
             }
         }
     }

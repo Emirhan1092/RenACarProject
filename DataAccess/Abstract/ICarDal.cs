@@ -1,7 +1,8 @@
 ﻿
+
 using Core.DataAccess;
 using Entities.Concrete;
-using Entities.DTOs;
+using Entities.Concrete;
 
 namespace DataAccess.Abstract
 {

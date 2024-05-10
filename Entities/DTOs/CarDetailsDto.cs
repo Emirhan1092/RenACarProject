@@ -1,6 +1,7 @@
-﻿using Core;
+﻿
+using Core;
 
-namespace Entities.DTOs
+namespace Entities.Concrete
 {
     public class CarDetailDto : IDto
     {

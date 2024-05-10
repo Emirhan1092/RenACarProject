@@ -2,7 +2,7 @@
 
 using DataAccess.Abstract;
 using Entities.Concrete;
-using Entities.DTOs;
+using Entities.Concrete;
 using System.Linq.Expressions;
 
 namespace DataAccess.Conctrete.InMemory

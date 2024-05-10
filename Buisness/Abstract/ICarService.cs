@@ -1,7 +1,7 @@
 ﻿
 using Core.Utilities.Results;
 using Entities.Concrete;
-using Entities.DTOs;
+using Entities.Concrete;
 
 namespace Buisness.Abstract
 {

@@ -1,12 +1,4 @@
-﻿using Core.Utilities.Results;
-using FluentValidation;
-using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation;
 
 namespace Core.CrossCuttingConcerns.Validation
 {

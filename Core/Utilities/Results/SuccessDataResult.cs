@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Core.Utilities.Results
+﻿namespace Core.Utilities.Results
 {
     public class SuccesDataResult<T> : DataResult<T>
     {
-        public SuccesDataResult(T data, string message) : base(data, true, message)
+        public SuccesDataResult(T data, string massege) : base(data, true, massege)
         {
 
         }
@@ -17,12 +11,13 @@ namespace Core.Utilities.Results
         {
 
         }
-        public SuccesDataResult(string message) : base(default, true, message)
+        public SuccesDataResult(string massege) : base(default, true, massege)
 
         {
 
 
         }
+
         public SuccesDataResult() : base(default, true)
         {
 

@@ -40,7 +40,7 @@ namespace WebAPI.Controllers
         }
 
 
-        [HttpGet("add")]
+        [HttpPost("add")]
 
         public IActionResult Add(Car car)
         {

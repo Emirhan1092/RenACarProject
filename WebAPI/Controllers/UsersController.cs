@@ -1,6 +1,5 @@
 ﻿using Buisness.Abstract;
 using Entities.Concrete;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -10,60 +9,35 @@ namespace WebAPI.Controllers
     public class UsersController : ControllerBase
     {
         IUserService _userService;
+
         public UsersController(IUserService userService)
         {
             _userService = userService;
         }
-        [HttpGet("getall")]
-        public IActionResult GetAll()
-        {
-            var result = _userService.GetAll();
-            if (result.Success)
-            {
-                return Ok(result.Data);
-            }
-            return BadRequest(result.Message);
-        }
-        [HttpGet("getbyid")]
-        public IActionResult GetById(int id)
-        {
-            var result = _userService.Get(id);
-            if (result.Success) 
-            { 
 
-                return Ok(result.Data);
-            }
-            return BadRequest(result.Message);
+        [HttpGet("getclaims")]
+        public IActionResult GetClaims(User user)
+        {
+            var claims = _userService.GetClaims(user);
+            return Ok(claims);
         }
+
         [HttpPost("add")]
         public IActionResult Add(User user)
         {
-            var result = _userService.Add(user);
-            if (result.Success)
-            {
-                return Ok(result.Message);
-            }
-            return BadRequest(result.Message);
+            _userService.Add(user);
+            return Ok("User added successfully");
         }
-        [HttpPut("update")]
-        public IActionResult Update(User user)
+
+        [HttpGet("getbymail")]
+        public IActionResult GetByMail(string mail)
         {
-            var result = _userService.Update(user);
-            if (result.Success)
+            var user = _userService.GetByMail(mail);
+            if (user != null)
             {
-                return Ok(result.Message);
+                return Ok(user);
             }
-            return BadRequest(result.Message);
-        }
-        [HttpDelete("delete")]
-        public IActionResult Delete(User user)
-        {
-            var result = _userService.Delete(user);
-            if (result.Success)
-            {
-                return Ok(result.Message);
-            }
-            return BadRequest(result.Message);
+            return NotFound("User not found");
         }
     }
 }

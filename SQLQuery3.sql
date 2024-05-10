@@ -74,6 +74,15 @@ INSERT INTO Users (Id, FirstName, LastName, Email, PasswordHash) VALUES
 (1, 'Muhammed', 'Erdin', 'BLABLA@gmail.com', '12345'),
 (2, 'Engin', 'Demiroğ', 'blabla@gmail.com', '12345');
 
+CREATE TABLE CarImages (
+    Id INT PRIMARY KEY,
+    CarId INT,
+    ImagePath VARCHAR(255),
+    ImageDate DATETIME
+);
+
+drop table Cars;
 drop table Users;
 drop table Customers;
 drop table Rentals;
+drop table CarImages;
